@@ -2,10 +2,10 @@ package clases;
 
 public class Principal {
 	public static void main(String args[]){
-		Telefono t = new Telefono(
+		/*Telefono t = new Telefono(
 				"Negro","Sony", "Xperia", 
-				"Android", "1024x2134", 13213, 4654);
-		
+				"Android", "1024x2134", 13213, 4654);*/
+		Telefono t = new Telefono();
 		/*t.setMarca("Sony");
 		t.setModelo("Xperia Z Ultra");
 		t.setColor("Negro");
@@ -17,5 +17,6 @@ public class Principal {
 		t.encender();
 		t.apagar();
 		
+		System.out.println(t.toString());
 	}
 }
