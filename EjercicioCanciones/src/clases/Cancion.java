@@ -22,6 +22,8 @@ public class Cancion {
 		this.anio = anio;
 		this.rutaArchivo = rutaArchivo;
 	}
+	
+	public Cancion(){}
 	public String getNombreCancion() {
 		return nombreCancion;
 	}
