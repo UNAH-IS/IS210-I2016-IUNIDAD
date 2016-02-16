@@ -8,6 +8,8 @@ public class Artista {
 		this.nombre = nombre;
 		this.vocalista = vocalista;
 	}
+	
+	public Artista(){}
 
 	public String getNombre() {
 		return nombre;

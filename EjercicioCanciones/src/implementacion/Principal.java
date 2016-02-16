@@ -43,20 +43,99 @@ public class Principal {
 			System.out.println(canciones.get(i).toString());
 		*/
 		
+		int opcion = 0;
+		do{
+			opcion = Integer.valueOf(JOptionPane.showInputDialog(
+					"0 Salir\n"
+					+ "1 Agregar una cancion\n"
+					+ "2 Modificar una cancion\n"
+					+ "3 Eliminar una cancion\n"
+					+ "4 Mostrar la informacion guardada."));
+			JOptionPane.showMessageDialog(null, "Opcion " + opcion);
+			switch(opcion){
+				case 0:
+					System.out.println("Adios");
+					break;
+				case 1:
+					agregarRegistro();
+					break;
+				case 2:
+					modificarRegistro();
+					break;
+				case 3:
+					eliminarRegistro();
+					break;
+				case 4:
+					mostrarInformacion();
+					break;
+			}
+			
+		}while(opcion!=0);
+		
+	}
+	
+	public void agregarRegistro(){
+		//Crear una instancia vacia
 		Cancion c = new Cancion();
-		c.setNombreCancion(
-				JOptionPane.showInputDialog(
-						"Ingrese el nombre de la cancion"
-				)
-		);
-		//Conversion con wrappers o clases envolventes.
-		c.setAnio(
-				Integer.valueOf(JOptionPane.showInputDialog("Año cancion: "))
-		);
+		//Solicitar informacion
+		c.setNombreCancion(JOptionPane.showInputDialog("Ingrese el nombre de la cancion:"));
+		c.setAlbum(JOptionPane.showInputDialog("Ingrese el nombre del Album:"));
+		c.setGenero(JOptionPane.showInputDialog("Ingrese el genero de la cancion:"));
+		c.setRutaArchivo(JOptionPane.showInputDialog("Ingrese la ruta del archivo:"));
+		c.setAnio(Integer.valueOf(JOptionPane.showInputDialog("Año")));
+		c.setDuracionSegundos(Integer.valueOf(JOptionPane.showInputDialog("Duración en segundos")));
+		c.setTamanioBytes(Integer.valueOf(JOptionPane.showInputDialog("Tamaño en bytes:")));
 		
-		JOptionPane.showMessageDialog(null, 
-				"Año: " + c.getAnio());
+		//Llenar la informacion del artista, 
+		//hay que crear un objeto nuevo porque se esta 
+		//usando composicion.
+		Artista a = new Artista();
+		a.setNombre(JOptionPane.showInputDialog("Artista"));
+		a.setVocalista(JOptionPane.showInputDialog("Vocalista"));
+		c.setArtista(a);
 		
+		//Agregar el objeto creado al ArrayList
+		canciones.add(c);
+		
+	}
+	
+	public void modificarRegistro(){
+		//Solicitar al usuario el indice que desea modificar
+		int indiceModificar = 
+				Integer.valueOf(
+					JOptionPane.showInputDialog("Que registro desea modificar? del (0 al "+(canciones.size()-1)+")"));
+		
+		//Obtener el objeto a modificar
+		Cancion c = canciones.get(indiceModificar);
+		
+		//Solicitar nuevamente la informacion al usuario
+		c.setNombreCancion(JOptionPane.showInputDialog("Ingrese el nombre de la cancion:", c.getNombreCancion()));
+		c.setAlbum(JOptionPane.showInputDialog("Ingrese el nombre del Album:", c.getAlbum()));
+		c.setGenero(JOptionPane.showInputDialog("Ingrese el genero de la cancion:", c.getGenero()));
+		c.setRutaArchivo(JOptionPane.showInputDialog("Ingrese la ruta del archivo:", c.getRutaArchivo()));
+		c.setAnio(Integer.valueOf(JOptionPane.showInputDialog("Año", c.getAnio())));
+		c.setDuracionSegundos(Integer.valueOf(JOptionPane.showInputDialog("Duración en segundos", c.getDuracionSegundos())));
+		c.setTamanioBytes(Integer.valueOf(JOptionPane.showInputDialog("Tamaño en bytes:", c.getTamanioBytes())));
+		//Llenar la informacion del artista, 
+		//hay que crear un objeto nuevo porque se esta 
+		//usando composicion.
+		Artista a = new Artista();
+		a.setNombre(JOptionPane.showInputDialog("Artista",c.getArtista().getNombre()));
+		a.setVocalista(JOptionPane.showInputDialog("Vocalista", c.getArtista().getVocalista()));
+		c.setArtista(a);
+		
+		
+		//Actualizar el objeto en el ArrayList
+		canciones.set(indiceModificar, c);
+	}
+	
+	public void eliminarRegistro(){
+		
+	}
+	
+	public void mostrarInformacion(){
+		for(int i=0; i<canciones.size();i++)
+			System.out.println(canciones.get(i).toString());
 	}
 
 	public static void main(String[] args) {
