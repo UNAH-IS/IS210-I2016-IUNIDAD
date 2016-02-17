@@ -51,7 +51,6 @@ public class Principal {
 					+ "2 Modificar una cancion\n"
 					+ "3 Eliminar una cancion\n"
 					+ "4 Mostrar la informacion guardada."));
-			JOptionPane.showMessageDialog(null, "Opcion " + opcion);
 			switch(opcion){
 				case 0:
 					System.out.println("Adios");
@@ -68,46 +67,14 @@ public class Principal {
 				case 4:
 					mostrarInformacion();
 					break;
-			}
-			
+			}			
 		}while(opcion!=0);
 		
 	}
 	
-	public void agregarRegistro(){
-		//Crear una instancia vacia
-		Cancion c = new Cancion();
-		//Solicitar informacion
-		c.setNombreCancion(JOptionPane.showInputDialog("Ingrese el nombre de la cancion:"));
-		c.setAlbum(JOptionPane.showInputDialog("Ingrese el nombre del Album:"));
-		c.setGenero(JOptionPane.showInputDialog("Ingrese el genero de la cancion:"));
-		c.setRutaArchivo(JOptionPane.showInputDialog("Ingrese la ruta del archivo:"));
-		c.setAnio(Integer.valueOf(JOptionPane.showInputDialog("Año")));
-		c.setDuracionSegundos(Integer.valueOf(JOptionPane.showInputDialog("Duración en segundos")));
-		c.setTamanioBytes(Integer.valueOf(JOptionPane.showInputDialog("Tamaño en bytes:")));
-		
-		//Llenar la informacion del artista, 
-		//hay que crear un objeto nuevo porque se esta 
-		//usando composicion.
-		Artista a = new Artista();
-		a.setNombre(JOptionPane.showInputDialog("Artista"));
-		a.setVocalista(JOptionPane.showInputDialog("Vocalista"));
-		c.setArtista(a);
-		
-		//Agregar el objeto creado al ArrayList
-		canciones.add(c);
-		
-	}
-	
-	public void modificarRegistro(){
-		//Solicitar al usuario el indice que desea modificar
-		int indiceModificar = 
-				Integer.valueOf(
-					JOptionPane.showInputDialog("Que registro desea modificar? del (0 al "+(canciones.size()-1)+")"));
-		
-		//Obtener el objeto a modificar
-		Cancion c = canciones.get(indiceModificar);
-		
+	//Enviar parametros por referencia, todos los objetos en java se envian por referencia
+	//Enviar parametros por valor, todos los tipos primitivos se envian por valor
+	public void ingresarDatos(Cancion c){
 		//Solicitar nuevamente la informacion al usuario
 		c.setNombreCancion(JOptionPane.showInputDialog("Ingrese el nombre de la cancion:", c.getNombreCancion()));
 		c.setAlbum(JOptionPane.showInputDialog("Ingrese el nombre del Album:", c.getAlbum()));
@@ -123,21 +90,63 @@ public class Principal {
 		a.setNombre(JOptionPane.showInputDialog("Artista",c.getArtista().getNombre()));
 		a.setVocalista(JOptionPane.showInputDialog("Vocalista", c.getArtista().getVocalista()));
 		c.setArtista(a);
+	}
+	
+	public void agregarRegistro(){
+		//Crear una instancia vacia
+		Cancion c = new Cancion();
 		
+		ingresarDatos(c);
+		
+		//Agregar el objeto creado al ArrayList
+		canciones.add(c);
+		
+	}
+	
+	public void modificarRegistro(){
+		//Solicitar al usuario el indice que desea modificar
+		int indiceModificar = 
+				Integer.valueOf(
+					JOptionPane.showInputDialog("Que registro desea modificar? del (0 al "+(canciones.size()-1)+")"));
+		
+		//Obtener el objeto a modificar
+		Cancion c = canciones.get(indiceModificar);
+		ingresarDatos(c);		
 		
 		//Actualizar el objeto en el ArrayList
 		canciones.set(indiceModificar, c);
 	}
 	
 	public void eliminarRegistro(){
+		//Solicitar el registro a eliminar
+		int indiceEliminar = 
+				Integer.valueOf(
+					JOptionPane.showInputDialog(
+						"Que registro desea eliminar? del (0 al "+(canciones.size()-1)+")"
+					)
+				);
+		//Consultar al usuario si de verdad quiere eliminar el registro
+		int respuesta = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el registro?");
+		//0: Si
+		//1: No
+		//2: Cancelar
 		
+		//Eliminarlo en caso de contestar que si.
+		
+		if (respuesta == 0)
+			canciones.remove(indiceEliminar);
+		else if (respuesta == 2)
+			System.out.println("Cancelar, no hizo nada");
 	}
 	
 	public void mostrarInformacion(){
+		String registros = "";
 		for(int i=0; i<canciones.size();i++)
-			System.out.println(canciones.get(i).toString());
+			registros += canciones.get(i).toString()+"\n";
+		
+		JOptionPane.showMessageDialog(null,registros);
 	}
-
+	
 	public static void main(String[] args) {
 		new Principal(); //Instancia anonima+		
 	}

@@ -23,7 +23,9 @@ public class Cancion {
 		this.rutaArchivo = rutaArchivo;
 	}
 	
-	public Cancion(){}
+	public Cancion(){
+		 artista = new Artista();
+	}
 	public String getNombreCancion() {
 		return nombreCancion;
 	}
