@@ -12,5 +12,30 @@ public class Alumno extends Persona{ //Clase persona es la clase padre
 		this.cuenta = cuenta;
 	}
 	
-	public void matricular(){}
+	//Si la clase padre tiene un constructor vacio, 
+	//desde el constructor de la clase
+	//no es necesario utilizar super ya que automaticamente 
+	//llama al constructor vacio
+	public Alumno(){}
+	
+	@Override
+	public void matricular(){
+		super.matricular();
+		System.out.println("Matricular desde la clase hija (Alumno)");
+	}
+
+	public String getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(String cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Cuenta: "+ this.cuenta;
+	}
+
+		
 }

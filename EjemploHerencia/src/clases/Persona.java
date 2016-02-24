@@ -1,12 +1,15 @@
 package clases;
 
-public class Persona {
-	private String nombre;
-	private String apellido;
-	private String genero;
-	private int edad;
-	private String carrera;
-	private String correo;
+public class Persona /*extends Object*/{
+	//Modificador de acceso protected es similar a private
+	//la diferencia es que es posible acceder a los atributos
+	//o metodos desde las clases hijas
+	protected String nombre;
+	protected String apellido;
+	protected String genero;
+	protected int edad;
+	protected String carrera;
+	protected String correo;
 	public Persona(String nombre, String apellido, String genero, int edad,
 			String carrera, String correo) {
 		this.nombre = nombre;
@@ -17,7 +20,9 @@ public class Persona {
 		this.correo = correo;
 	}
 	
-	public Persona(){}
+	public Persona(){
+		System.out.println("Ejecutando constructor de persona");
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -74,7 +79,9 @@ public class Persona {
 				+ carrera + ", correo=" + correo + "]";
 	}
 	
-	public void matricular(){}
+	public void matricular(){
+		System.out.println("Matricular desde la clase padre(Persona)");
+	}
 	
 	public void aprobar(){}
 	

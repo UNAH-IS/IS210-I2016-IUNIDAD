@@ -8,6 +8,11 @@ public class Principal {
 				"Juan","Perez","M",34,"Ing. Sistemas",
 				"jperez@gmail.com",
 				"20001232333");
+		a.matricular();
+		//System.out.println(a.toString());
+		//Alumno a1 = new Alumno();
+		
+		
 	}
 	
 	

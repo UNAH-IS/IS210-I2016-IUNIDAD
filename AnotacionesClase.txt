@@ -1,0 +1,115 @@
+*Constructores
+Son metodos especiales que se utilizan para inicializar atributos u otros objetos dentro de una clase.
+
+Caracteristicas:
+-Es el primer metodo en ejecutarse al instanciar una clase.
+-Generalmente se utiliza para inicializar atributos mediante parametros.
+-Debe tener exactamente el mismo nombre de la clase.
+-Debe ser public
+-No tiene valor de retorno, inclusive void.
+-Puede sobrecargarse.
+-Si no se crea un constructor Java crea uno vacio por defecto. En caso de si crear un constructor Java no creara el constructor por defecto.
+
+
+Sobrecarga de metodos
+Son metodos con el mismo nombre y tipo de dato para valor de retorno, pero que se diferencian por la cantidad o tipos de parametros.
+
+Pilares de la POO
+*Abstraccion
+	Utilizar funcionalidades y caracteristicas sin necesidad de saber como funciona, es decir nos abstraemos de dicha funcionalidad. Esto se logra al momento de definir una clase, sus atributos y metodos.
+*Encapsulacion
+	Proteger o restringir el acceso a la informacion (atributos, metodos) de una clase. Se hace por medio de modificadores de acceso que pueden asignarse a:
+	Atributos
+	Metodos
+	Clases
+
+	Modificadores de Acceso:
+	*public: Es visible desde cualquier lado
+	*private: Es visible dentro de la clase y dentro de los metodos de la clase.
+	*protected: Se utiliza para que clases hijas puedan acceder a atributos de clases padre.
+	*default: Diferencia con public; no se pueden acceder a los atributos o metodos desde otros paquetes.
+*Herencia
+	Es una funcionalidad que ofrecen los lenguajes orientados a objetos que permiten la reutilización de codigo. Permite crear nuevas clases a partir de otras ya existentes, obteniendo caracteristicas y acciones similares a las ya definidas previamente.
+
+	No existe herencia multiple utilizando clases.
+	Se puede llamar al constructor de la clase padre utilizando super()
+	Se puede llamar a cualquier atributo o metodo de la clase padre utilizando super.atributo y super.metodo()
+	Obligatoriamente un constructor en un clase hija debe llamar al constructor de la clase padre, se puede omitir este llamado si la clase padre tiene un constructor vacio.
+	Toda clase en Java hereda de la clase Object, el metodo toString es un ejemplo de uno de los metodos de esta clase.
+	Los atributos de una clase padre usualmente se les asigna el modificador de acceso protected, para que puedan ser accedidos desde las clases hija.
+
+
+	Operador instanceof: es un operador logico(retorna verdadero o falso) se utiliza para saber si un objeto es una instancia de cierto tipo.
+	Sintaxis:
+
+	objeto instanceof Clase
+
+
+*Polimorfismo: Se refiere a la propiedad por la que es posible enviar mensajes(ejemplo: ejecutar metodos) sintacticamente iguales a objetos de tipos distintos.
+
+	-Sobreescritura de metodos: es volver a escribir un metodo en una clase hija que previamente estaba definido en su clase padre, de tal forma que puede redefinir las instrucciones o acciones a ejecutar.
+	-Compatibilidad de clases: Tratar a clases hijas como que fueran del mismo tipo de la clase padre (por ejemplo: agregar objetos de clases hijas en un ArrayList con Rawtype de una clase padre).
+	-Sobrecarga de metodos.
+
+
+Modificador final: Se utiliza para definir constantes
+Modificador static: Se utiliza para acceder a un atributo o metodo de una clase sin necesidad de crear una instancia, por lo general debe ser public.
+
+
+Escalabilidad: permite que los cambios, adecuaciones, mejoras o correcciones en el futuro sean mas simples y organizadas. Esto da como resultado un mayor crecimiento.
+
+
+
+Clases abstractas
+Son clases que usualmente se definen Compatibilidad	o patron o molde para clases hijas, tienen las siguientes caracteristicas:
+
+-Se utiliza el modificador abstract para definir una clase abstracta.
+-Una clase abstracta puede tener o no metodos abstractos.
+-Si una clase tiene un metodo abstracto obligatoriamente la clase debe ser abstracta.
+-No se puede instanciar.
+-Si pueden llevar constructores.
+-Si se define un metodo abstracto este debe ser sobreescrito obligatoriamente en las clases hijas.
+-Un metodo abstracto no tiene cuerpo, unicamente se declara.
+-Usualmente se utiliza en clases padre.
+
+
+Composicion:
+Es utilizar para un atributo especifico un tipo de dato que sea una clase previamente definida. Usualmente se hace uso de composicion cuando un atributo tiene mas atributos.
+
+
+Interfaces:
+Se les conoce como clases abstractas puras. Es una estructura de datos similar a una clase y tiene las siguientes caracteristicas:
+
+Caracteristicas:
+-Se utiliza la palabra reservada interface en vez de class.
+-Se utilizan para simular la herencia multiple, es posible tener varias interfaces como padres.
+-Todos sus metodos son abstractos y publicos
+-Todos sus atributos deben ser public static final
+-No se puede instanciar
+-No tiene constructores
+-Para utilizar una interfaz como padre en herencia se utiliza implements en vez de extends si la hija es una clase.
+-Para utilizar una interfaz como padre en herencia se utiliza extends si la hija es una interfaz.
+-Usualmente se utilizan para:
+	Listeners (Gestion de eventos de usuario)
+	Agregar compatibilidad entre clases.
+	Librerias de constantes.
+	Estructuras basicas y simples.	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
