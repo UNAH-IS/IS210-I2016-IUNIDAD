@@ -1,6 +1,6 @@
 package clases;
 
-public class Persona /*extends Object*/{
+public abstract class Persona /*extends Object*/{
 	//Modificador de acceso protected es similar a private
 	//la diferencia es que es posible acceder a los atributos
 	//o metodos desde las clases hijas
@@ -83,7 +83,7 @@ public class Persona /*extends Object*/{
 		System.out.println("Matricular desde la clase padre(Persona)");
 	}
 	
-	public void aprobar(){}
+	public abstract void aprobar();
 	
 	public void reprobar(){}
 }

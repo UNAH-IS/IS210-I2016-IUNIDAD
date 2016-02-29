@@ -34,8 +34,13 @@ public class Alumno extends Persona{ //Clase persona es la clase padre
 
 	@Override
 	public String toString() {
-		return super.toString() + " Cuenta: "+ this.cuenta;
+		return "Alumno [cuenta=" + cuenta + ", nombre=" + nombre
+				+ ", apellido=" + apellido + ", genero=" + genero + ", edad="
+				+ edad + ", carrera=" + carrera + ", correo=" + correo + "]";
 	}
 
-		
+	@Override
+	public void aprobar() {
+		//
+	}		
 }
