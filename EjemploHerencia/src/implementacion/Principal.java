@@ -17,6 +17,21 @@ public class Principal {
 	public Principal(){
 		personas = new ArrayList<Persona>();
 		
+		//La compatibilidad de clases
+		//permite crear instancias a partir de 
+		//constructores de las clases hijas
+		Persona p = new Alumno("Mario","Rodriguez","M",34,"Ing. Sistemas",
+				"jperez@gmail.com",
+				"20001232333");
+		
+		//Instanciar una clase hija utilizando 
+		//el constructor de una clase padre no
+		//es posible
+		//Alumno a6 = new Persona();
+		
+		
+		
+		
 		/* No se puede instanciar una clase abstracta
 		 * Persona p = new Persona("Maria", "Gomez", "F",
 				44,"Ing Quimica", "maria@gmail.com");*/
@@ -58,6 +73,7 @@ public class Principal {
 		personas.add(m1);
 		personas.add(a2);
 		personas.add(m2);
+		personas.add(p);
 		
 		metodoX(m1);
 		mostrarAlumnos();
@@ -79,8 +95,15 @@ public class Principal {
 		for(int i=0; i< personas.size();i++){
 			//El operador instanceof es un operador logico
 			//objeto instanceof Clase
-			if (personas.get(i) instanceof Maestro)
+			if (personas.get(i) instanceof Maestro){
 				System.out.println(personas.get(i).toString());
+				/*Maestro x = (Maestro)personas.get(i);
+				x.cobrar();*/
+				//Por compatibilidad de clases es posible hacer 
+				// cast o conversion de un tipo Padre a un
+				// objeto de una clase hija
+				((Maestro)personas.get(i)).cobrar();
+			}
 		}
 	}
 	

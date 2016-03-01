@@ -34,5 +34,9 @@ public class Maestro extends Persona {
 	@Override
 	public void aprobar() {
 				
-	}	
+	}
+	
+	public void cobrar(){
+		System.out.println("Cobrando");
+	}
 }
